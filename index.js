@@ -1,21 +1,48 @@
 var apartaments = [];
-fetch('/data/london.json')
-  .then(response => response.json())
-  .then(apartamentos => {
+
+
+function activate() {
+  getApartaments().then(apartamentos => {
+
+    // A : en apartamentos estan todos 
+    // B : en apartments estan todos 
     apartaments = apartamentos;
+    addPrices(apartamentos);
     paginationInHTML(apartamentos);
-    paintApartments(apartamentos.slice(0, 20));
+    paintApartments(apartamentos);
+    initializeSliderFilter(apartamentos);
   })
-  .catch(errorCallback => {
-    console.log(errorCallback);
-  })
+}
+
+
+activate()
+
+///////////
+
+function getApartaments() {
+  return fetch('/data/london.json')
+    .then(response => response.json())
+    .then(apartamentos => {
+      apartaments = apartamentos;
+      return apartamentos;
+    })
+    .catch(errorCallback => {
+      console.log(errorCallback);
+    })
+}
 
 function paintApartments(apartamentos) {
-  apartmentsInHtml(apartamentos);
+  apartmentsInHtml(apartamentos.slice(0, 20));
+}
+
+function addPrices(apartamentos) {
+  apartamentos.map(apartamento => {
+    apartamento.price = Math.floor((Math.random() * 500) + 500);
+  });
 }
 
 function setPage(page) {
-  $("#App").html('');
+  $("#Apartments").html('');
   page = (page + 1) * 20;
   findPage(page);
 }
@@ -23,4 +50,8 @@ function setPage(page) {
 function findPage(page) {
   paintApartments(apartaments.slice(page - 20, page));
 }
+
+
+
+
 
