@@ -18,6 +18,10 @@ h2 {
     font-family: 'Open Sans';
 }
 
+a.active{
+    background-color: #cce5ff;
+}
+
 #block {
     display: grid;
     grid-template-columns: minmax(0,1fr) 4fr;
@@ -27,7 +31,6 @@ h2 {
 #filters {
     display:grid;
     grid-column:1/2;
-    border: #343a40 1px solid; 
     display: flex;
     flex-direction: column;
     align-items: center;

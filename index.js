@@ -1,5 +1,7 @@
-var apartaments = [];
-
+var apartaments = []
+var apartmentsWithFilter = [];
+var currentPage = 0;
+var previousPage = 0;
 
 function activate() {
   getApartaments().then(apartamentos => {
@@ -7,9 +9,11 @@ function activate() {
     // A : en apartamentos estan todos 
     // B : en apartments estan todos 
     apartaments = apartamentos;
+    apartmentsWithFilter = apartamentos;
+    paintNumberOfApartments(apartamentos);
     addPrices(apartamentos);
-    paginationInHTML(apartamentos);
-    paintApartments(apartamentos);
+    buttonOfpagination(apartamentos);
+    findPage(apartaments, currentPage);
     initializeSliderFilter(apartamentos);
   })
 }
@@ -18,21 +22,19 @@ function activate() {
 activate()
 
 ///////////
+function paintNumberOfApartments(apartamentos){
+  $("#numbers-of-apartments").text(`Number of apartments: ${apartamentos.length}`);
+}
 
 function getApartaments() {
   return fetch('/data/london.json')
     .then(response => response.json())
     .then(apartamentos => {
-      apartaments = apartamentos;
       return apartamentos;
     })
     .catch(errorCallback => {
       console.log(errorCallback);
     })
-}
-
-function paintApartments(apartamentos) {
-  apartmentsInHtml(apartamentos.slice(0, 20));
 }
 
 function addPrices(apartamentos) {
@@ -41,15 +43,6 @@ function addPrices(apartamentos) {
   });
 }
 
-function setPage(page) {
-  $("#Apartments").html('');
-  page = (page + 1) * 20;
-  findPage(page);
-}
-
-function findPage(page) {
-  paintApartments(apartaments.slice(page - 20, page));
-}
 
 
 
