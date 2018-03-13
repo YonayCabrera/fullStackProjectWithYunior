@@ -1,3 +1,4 @@
+
 function initializeSliderFilter(apartamentos) {
     resetSlider();
     $("#slider-range").slider({
@@ -16,14 +17,15 @@ function initializeSliderFilter(apartamentos) {
 function filterByPrice() {
     var min = getRangeOfLeftSlider();
     var max = getRangeOfRightSlider();
-    var filtro = apartmentsWithFilter.filter(apartamento => {
+    filtros = apartmentsWithFilter.filter(apartamento => {
         return (apartamento.price > min & apartamento.price < max)
     });
     $("#Apartments").html('');
     initializeButtons();
-    buttonOfpagination(filtro);
-    findPage(filtro, currentPage);
-    paintNumberOfApartments(filtro);
+    buttonOfpagination(filtros);
+    findPage(filtros, currentPage);
+    paintNumberOfApartments(filtros);
+    sortByValoration();
 }
 
 function getRangeOfLeftSlider() {

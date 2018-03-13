@@ -2,6 +2,7 @@ var apartaments = []
 var apartmentsWithFilter = [];
 var currentPage = 0;
 var previousPage = 0;
+var filtros = [];
 
 function activate() {
   getApartaments().then(apartamentos => {
@@ -10,6 +11,8 @@ function activate() {
     // B : en apartments estan todos 
     apartaments = apartamentos;
     apartmentsWithFilter = apartamentos;
+    filtros = apartamentos;
+    addValoration(apartmentsWithFilter);
     paintNumberOfApartments(apartamentos);
     addPrices(apartamentos);
     buttonOfpagination(apartamentos);
@@ -22,7 +25,7 @@ function activate() {
 activate()
 
 ///////////
-function paintNumberOfApartments(apartamentos){
+function paintNumberOfApartments(apartamentos) {
   $("#numbers-of-apartments").text(`Number of apartments: ${apartamentos.length}`);
 }
 
@@ -42,7 +45,14 @@ function addPrices(apartamentos) {
     apartamento.price = Math.floor((Math.random() * 500) + 500);
   });
 }
-
+function addValoration(apartamentos) {
+  apartamentos.map(apartamento => {
+    if (!apartamento["Reviews Core 4"]) {
+      apartamento["Reviews Core 4"] = {};
+      apartamento["Reviews Core 4"].text = 0;
+    }
+  })
+}
 
 
 
