@@ -4,10 +4,11 @@ function search() {
         var lowerCaseApartmentsDescription = apartamento["Hotel Description"].text.toLowerCase();
         return lowerCaseApartmentsDescription.includes(inputSearch);
     });
+    filtros = apartmentsWithFilter;
     $("#Apartments").html('');
     initializeButtons();
-    initializeSliderFilter(apartmentsWithFilter);
-    buttonOfpagination(apartmentsWithFilter);
-    findPage(apartmentsWithFilter, currentPage);
-    paintNumberOfApartments(apartmentsWithFilter);
+    initializeSliderFilter(filtros);
+    buttonOfpagination(filtros);
+    findPage(filtros, currentPage);
+    paintNumberOfApartments(filtros);
 }
