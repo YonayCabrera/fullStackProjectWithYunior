@@ -1,5 +1,5 @@
 
-function initializeSliderFilter(apartamentos) {
+export function initializeSliderFilter(apartamentos) {
     resetSlider();
     $("#slider-range").slider({
         range: true,

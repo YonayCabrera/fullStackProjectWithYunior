@@ -1,3 +1,9 @@
+import {initializeSliderFilter} from './filtersByPrices.js';
+import {buttonOfpagination} from './displayer.js';
+import {findPage} from './pagination.js';
+import {addButtons,addThreePoints} from './displayer.js';
+
+addThreePoints();
 var apartaments = []
 var apartmentsWithFilter = [];
 var currentPage = 0;
@@ -6,7 +12,7 @@ var filtros = [];
 
 function activate() {
   getApartaments().then(apartamentos => {
-
+    console.log("live")
     // A : en apartamentos estan todos 
     // B : en apartments estan todos 
     apartaments = apartamentos;

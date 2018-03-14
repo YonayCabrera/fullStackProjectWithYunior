@@ -1,10 +1,12 @@
+import paintApartments from './displayer.js';
+
 function setPage(page) {
     $("#Apartments").html('');
     var newPage = (page + 1) * 20;
     findPage(apartmentsWithFilter,page);
 }
 
-function findPage(apartamentos,page) {
+export function findPage(apartamentos,page) {
     var otherPage = apartamentos.slice(page * 20, ((page * 20)+ 20));
     currentPage = page;
     paintApartments(otherPage);

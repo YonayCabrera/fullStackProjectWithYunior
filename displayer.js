@@ -1,4 +1,4 @@
-function paintApartments(apartamentos) {
+export function paintApartments(apartamentos) {
     apartamentos.forEach(apartamento => {
         $("#Apartments").append(`<div class="card" style="width: 18rem;">
     <div class="card-body"><img src= "${apartamento['Hotel Image'].src}">
@@ -12,7 +12,7 @@ function paintApartments(apartamentos) {
 
 }
 
-function buttonOfpagination(apartamentos) {
+export function buttonOfpagination(apartamentos) {
     $("#items").html('');
     var pages = Math.round(apartamentos.length / 20);
     if (currentPage <= 3 && currentPage + 3 < pages) {
