@@ -1,6 +1,6 @@
 function sortByValoration() {
     if ($('#checkBoxValoration').is(':checked')) {
-        var sortedApartments = _.sortBy(filtros, (apartamento) => apartamento["Reviews Core 4"].text);
+        var sortedApartments = _.sortBy(filtros, (apartamento) => parseFloat(apartamento["Reviews Core 4"].text)).reverse();
         $("#Apartments").html('');
         initializeButtons();
         buttonOfpagination(sortedApartments);

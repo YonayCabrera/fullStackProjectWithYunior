@@ -49,7 +49,7 @@ function addValoration(apartamentos) {
   apartamentos.map(apartamento => {
     if (!apartamento["Reviews Core 4"]) {
       apartamento["Reviews Core 4"] = {};
-      apartamento["Reviews Core 4"].text = 0;
+      apartamento["Reviews Core 4"].text = "0";
     }
   })
 }
